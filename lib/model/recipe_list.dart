@@ -5,14 +5,15 @@ class RecipeList {
   });
 
   final int? count;
-  final List<Result> results;
+  final List<RecipeResult> results;
 
   factory RecipeList.fromJson(Map<String, dynamic> json) {
     return RecipeList(
       count: json["count"],
       results: json["results"] == null
           ? []
-          : List<Result>.from(json["results"]!.map((x) => Result.fromJson(x))),
+          : List<RecipeResult>.from(
+              json["results"]!.map((x) => RecipeResult.fromJson(x))),
     );
   }
 
@@ -22,8 +23,8 @@ class RecipeList {
       };
 }
 
-class Result {
-  Result({
+class RecipeResult {
+  RecipeResult({
     required this.renditions,
     required this.recipes,
     required this.name,
@@ -133,8 +134,8 @@ class Result {
   final String? servingsNounPlural;
   final String? nutritionVisibility;
 
-  factory Result.fromJson(Map<String, dynamic> json) {
-    return Result(
+  factory RecipeResult.fromJson(Map<String, dynamic> json) {
+    return RecipeResult(
       renditions: json["renditions"] == null
           ? []
           : List<Rendition>.from(
